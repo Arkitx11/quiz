@@ -1,16 +1,14 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:flutter/foundation.dart';
 
 part 'quiz_screen_state.freezed.dart';
 
 @freezed
-class QuizScreenState with _$QuizScreenState {
+abstract class QuizScreenState with _$QuizScreenState {
   const factory QuizScreenState({
     required String question,
     required List<String> options,
     required String answer,
     required int highScore,
-    required double quizProgress
-});
+    required double quizProgress,
+  }) = _QuizScreenState;
 }
-

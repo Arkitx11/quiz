@@ -1,18 +1,69 @@
-import 'package:flutter/foundation.dart';
-import 'package:quiz/data/question.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:quiz/ui/quiz_screen_state.dart';
+import '../data/question.dart';
 
 class QuizViewModel extends ChangeNotifier {
-  int _index = 0;
-  final List<Question> questions;
-
-  QuizViewModel({required this.questions}) {
-    _state.
+  QuizViewModel({required List<Question> question}) : _questions = question {
+    initializeState();
   }
 
-  final QuizScreenState _state;
+  late final int _questionCount = _questions.length;
+
+  final List<Question> _questions;
+
+  int _index = 0;
+
+  int _highscore = 0;
+
+  late QuizScreenState _state;
 
   QuizScreenState get state => _state;
 
+  void initializeState() {
+    final Question first = _questions.first;
+    _state = QuizScreenState(
+      question: first.question,
+      options: first.options,
+      quizProgress: 0.0,
+      answer: first.answer,
+      highScore: 0,
+    );
+    notifyListeners();
+  }
 
+  void updateQuestion() {}
+
+  void onTap(String option) {
+    if (option == _state.answer) _highscore += 10;
+    nextQuestion();
+    notifyListeners();
+  }
+
+  void nextQuestion() {
+    _index++;
+    if (_index >= _questionCount) {
+      _state = QuizScreenState(
+        question: _state.question,
+        options: _state.options,
+        answer: _state.answer,
+        highScore: _highscore,
+        quizProgress: 1.0,
+      );
+      showResultScreen();
+    }
+    else {
+      final Question question = _questions[_index];
+      _state = QuizScreenState(
+        question: question.question,
+        options: question.options,
+        answer: question.answer,
+        highScore: _highscore,
+        quizProgress: _state.quizProgress + 1 / _questions.length,
+      );
+    }
+    notifyListeners();
+  }
+  void showResultScreen() {
+    print(_highscore);
+  }
 }

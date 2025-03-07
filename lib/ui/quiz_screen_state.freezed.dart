@@ -13,7 +13,7 @@ part of 'quiz_screen_state.dart';
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
-mixin _$QuizScreenState implements DiagnosticableTreeMixin {
+mixin _$QuizScreenState {
 
  String get question; List<String> get options; String get answer; int get highScore; double get quizProgress;
 /// Create a copy of QuizScreenState
@@ -23,12 +23,6 @@ mixin _$QuizScreenState implements DiagnosticableTreeMixin {
 $QuizScreenStateCopyWith<QuizScreenState> get copyWith => _$QuizScreenStateCopyWithImpl<QuizScreenState>(this as QuizScreenState, _$identity);
 
 
-@override
-void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
-    ..add(DiagnosticsProperty('type', 'QuizScreenState'))
-    ..add(DiagnosticsProperty('question', question))..add(DiagnosticsProperty('options', options))..add(DiagnosticsProperty('answer', answer))..add(DiagnosticsProperty('highScore', highScore))..add(DiagnosticsProperty('quizProgress', quizProgress));
-}
 
 @override
 bool operator ==(Object other) {
@@ -40,7 +34,7 @@ bool operator ==(Object other) {
 int get hashCode => Object.hash(runtimeType,question,const DeepCollectionEquality().hash(options),answer,highScore,quizProgress);
 
 @override
-String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+String toString() {
   return 'QuizScreenState(question: $question, options: $options, answer: $answer, highScore: $highScore, quizProgress: $quizProgress)';
 }
 
@@ -86,7 +80,7 @@ as double,
 /// @nodoc
 
 
-class _QuizScreenState with DiagnosticableTreeMixin implements QuizScreenState {
+class _QuizScreenState implements QuizScreenState {
   const _QuizScreenState({required this.question, required final  List<String> options, required this.answer, required this.highScore, required this.quizProgress}): _options = options;
   
 
@@ -109,12 +103,6 @@ class _QuizScreenState with DiagnosticableTreeMixin implements QuizScreenState {
 _$QuizScreenStateCopyWith<_QuizScreenState> get copyWith => __$QuizScreenStateCopyWithImpl<_QuizScreenState>(this, _$identity);
 
 
-@override
-void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
-    ..add(DiagnosticsProperty('type', 'QuizScreenState'))
-    ..add(DiagnosticsProperty('question', question))..add(DiagnosticsProperty('options', options))..add(DiagnosticsProperty('answer', answer))..add(DiagnosticsProperty('highScore', highScore))..add(DiagnosticsProperty('quizProgress', quizProgress));
-}
 
 @override
 bool operator ==(Object other) {
@@ -126,7 +114,7 @@ bool operator ==(Object other) {
 int get hashCode => Object.hash(runtimeType,question,const DeepCollectionEquality().hash(_options),answer,highScore,quizProgress);
 
 @override
-String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+String toString() {
   return 'QuizScreenState(question: $question, options: $options, answer: $answer, highScore: $highScore, quizProgress: $quizProgress)';
 }
 

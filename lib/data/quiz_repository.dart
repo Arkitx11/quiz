@@ -1,6 +1,6 @@
 import 'question.dart';
 
-final List<Question> questions = [
+const List<Question> questions =  [
   Question(
     id: 1,
     question: "What is Flutter?",
@@ -8,7 +8,7 @@ final List<Question> questions = [
       "A bird",
       "A UI framework",
       "A programming language",
-      "A game engine"
+      "A game engine",
     ],
     answer: "A UI framework",
   ),
@@ -25,7 +25,7 @@ final List<Question> questions = [
       "StatefulWidget",
       "StatelessWidget",
       "InheritedWidget",
-      "Container"
+      "Container",
     ],
     answer: "StatelessWidget",
   ),
@@ -60,7 +60,7 @@ final List<Question> questions = [
       "Call setState()",
       "Rebuild the widget",
       "Use GlobalKey",
-      "Restart the app"
+      "Restart the app",
     ],
     answer: "Call setState()",
   ),
@@ -71,7 +71,7 @@ final List<Question> questions = [
       "Dart code",
       "Widget tree",
       "Project metadata and dependencies",
-      "Database schema"
+      "Database schema",
     ],
     answer: "Project metadata and dependencies",
   ),

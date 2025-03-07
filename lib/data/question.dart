@@ -4,10 +4,9 @@ class Question {
   final List<String> options;
   final String answer;
 
-  Question(
+  const Question(
       {required this.id,
       required this.question,
       required this.options,
-      required this.answer})
-      : assert(options.contains(answer), 'Answer must be in the option');
+      required this.answer});
 }

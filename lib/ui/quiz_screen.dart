@@ -20,7 +20,14 @@ class QuizScreen extends StatelessWidget {
               actions: [
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Icon(Icons.restart_alt),
+                  child: IconButton(
+                    onPressed:
+                        () => showDialog(
+                          context: context,
+                          builder: (context) => ResetProgressDialogBox(),
+                        ),
+                    icon: Icon(Icons.restart_alt),
+                  ),
                 ),
               ],
             ),
@@ -40,8 +47,22 @@ class ResetProgressDialogBox extends StatelessWidget {
       icon: Icon(Icons.restart_alt),
       content: Text('The following action will reset your progress'),
       actions: [
-        TextButton(onPressed: () {}, child: Text('No')),
-        TextButton(onPressed: () {}, child: Text('Yes')),
+        TextButton(
+          onPressed: () {
+            Navigator.pop(context, 'No');
+          },
+          child: Text('No'),
+        ),
+        TextButton(
+          onPressed: () {
+            Provider.of<QuizViewModel>(
+              context,
+              listen: false,
+            ).onPressingReset();
+            Navigator.pop(context, 'Yes');
+          },
+          child: Text('Yes'),
+        ),
       ],
     );
   }
@@ -52,13 +73,16 @@ class HighScoreDialogBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final QuizViewModel model = Provider.of<QuizViewModel>(context);
     return AlertDialog(
       icon: Icon(Icons.emoji_events),
       title: Text('Result'),
-      content: Text('Your Highscore is: 100'),
+      content: Text('Your Highscore is: ${model.state.highScore}'),
       actions: [
-        TextButton(onPressed: () {}, child: Text('Restart')),
-        TextButton(onPressed: () {}, child: Text('Dismiss')),
+        TextButton(onPressed: () {
+          Navigator.pop(context, 'Restart');
+          Provider.of<QuizViewModel>(context, listen: false).onPressingReset();
+        }, child: Text('Restart')),
       ],
     );
   }
@@ -69,6 +93,17 @@ class QuizScreenBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bool quizCompletion =
+        Provider.of<QuizViewModel>(context).state.isCompleted;
+
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      if (quizCompletion) {
+        showDialog(
+          context: context,
+          builder: (context) => HighScoreDialogBox(),
+        );
+      }
+    });
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.spaceAround,

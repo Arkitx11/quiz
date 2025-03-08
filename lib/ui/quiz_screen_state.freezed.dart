@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$QuizScreenState {
 
- String get question; List<String> get options; String get answer; int get highScore; double get quizProgress;
+ String get question; List<String> get options; String get answer; int get highScore; double get quizProgress; bool get isCompleted;
 /// Create a copy of QuizScreenState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -26,16 +26,16 @@ $QuizScreenStateCopyWith<QuizScreenState> get copyWith => _$QuizScreenStateCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is QuizScreenState&&(identical(other.question, question) || other.question == question)&&const DeepCollectionEquality().equals(other.options, options)&&(identical(other.answer, answer) || other.answer == answer)&&(identical(other.highScore, highScore) || other.highScore == highScore)&&(identical(other.quizProgress, quizProgress) || other.quizProgress == quizProgress));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is QuizScreenState&&(identical(other.question, question) || other.question == question)&&const DeepCollectionEquality().equals(other.options, options)&&(identical(other.answer, answer) || other.answer == answer)&&(identical(other.highScore, highScore) || other.highScore == highScore)&&(identical(other.quizProgress, quizProgress) || other.quizProgress == quizProgress)&&(identical(other.isCompleted, isCompleted) || other.isCompleted == isCompleted));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,question,const DeepCollectionEquality().hash(options),answer,highScore,quizProgress);
+int get hashCode => Object.hash(runtimeType,question,const DeepCollectionEquality().hash(options),answer,highScore,quizProgress,isCompleted);
 
 @override
 String toString() {
-  return 'QuizScreenState(question: $question, options: $options, answer: $answer, highScore: $highScore, quizProgress: $quizProgress)';
+  return 'QuizScreenState(question: $question, options: $options, answer: $answer, highScore: $highScore, quizProgress: $quizProgress, isCompleted: $isCompleted)';
 }
 
 
@@ -46,7 +46,7 @@ abstract mixin class $QuizScreenStateCopyWith<$Res>  {
   factory $QuizScreenStateCopyWith(QuizScreenState value, $Res Function(QuizScreenState) _then) = _$QuizScreenStateCopyWithImpl;
 @useResult
 $Res call({
- String question, List<String> options, String answer, int highScore, double quizProgress
+ String question, List<String> options, String answer, int highScore, double quizProgress, bool isCompleted
 });
 
 
@@ -63,14 +63,15 @@ class _$QuizScreenStateCopyWithImpl<$Res>
 
 /// Create a copy of QuizScreenState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? question = null,Object? options = null,Object? answer = null,Object? highScore = null,Object? quizProgress = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? question = null,Object? options = null,Object? answer = null,Object? highScore = null,Object? quizProgress = null,Object? isCompleted = null,}) {
   return _then(_self.copyWith(
 question: null == question ? _self.question : question // ignore: cast_nullable_to_non_nullable
 as String,options: null == options ? _self.options : options // ignore: cast_nullable_to_non_nullable
 as List<String>,answer: null == answer ? _self.answer : answer // ignore: cast_nullable_to_non_nullable
 as String,highScore: null == highScore ? _self.highScore : highScore // ignore: cast_nullable_to_non_nullable
 as int,quizProgress: null == quizProgress ? _self.quizProgress : quizProgress // ignore: cast_nullable_to_non_nullable
-as double,
+as double,isCompleted: null == isCompleted ? _self.isCompleted : isCompleted // ignore: cast_nullable_to_non_nullable
+as bool,
   ));
 }
 
@@ -81,7 +82,7 @@ as double,
 
 
 class _QuizScreenState implements QuizScreenState {
-  const _QuizScreenState({required this.question, required final  List<String> options, required this.answer, required this.highScore, required this.quizProgress}): _options = options;
+  const _QuizScreenState({required this.question, required final  List<String> options, required this.answer, required this.highScore, required this.quizProgress, required this.isCompleted}): _options = options;
   
 
 @override final  String question;
@@ -95,6 +96,7 @@ class _QuizScreenState implements QuizScreenState {
 @override final  String answer;
 @override final  int highScore;
 @override final  double quizProgress;
+@override final  bool isCompleted;
 
 /// Create a copy of QuizScreenState
 /// with the given fields replaced by the non-null parameter values.
@@ -106,16 +108,16 @@ _$QuizScreenStateCopyWith<_QuizScreenState> get copyWith => __$QuizScreenStateCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _QuizScreenState&&(identical(other.question, question) || other.question == question)&&const DeepCollectionEquality().equals(other._options, _options)&&(identical(other.answer, answer) || other.answer == answer)&&(identical(other.highScore, highScore) || other.highScore == highScore)&&(identical(other.quizProgress, quizProgress) || other.quizProgress == quizProgress));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _QuizScreenState&&(identical(other.question, question) || other.question == question)&&const DeepCollectionEquality().equals(other._options, _options)&&(identical(other.answer, answer) || other.answer == answer)&&(identical(other.highScore, highScore) || other.highScore == highScore)&&(identical(other.quizProgress, quizProgress) || other.quizProgress == quizProgress)&&(identical(other.isCompleted, isCompleted) || other.isCompleted == isCompleted));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,question,const DeepCollectionEquality().hash(_options),answer,highScore,quizProgress);
+int get hashCode => Object.hash(runtimeType,question,const DeepCollectionEquality().hash(_options),answer,highScore,quizProgress,isCompleted);
 
 @override
 String toString() {
-  return 'QuizScreenState(question: $question, options: $options, answer: $answer, highScore: $highScore, quizProgress: $quizProgress)';
+  return 'QuizScreenState(question: $question, options: $options, answer: $answer, highScore: $highScore, quizProgress: $quizProgress, isCompleted: $isCompleted)';
 }
 
 
@@ -126,7 +128,7 @@ abstract mixin class _$QuizScreenStateCopyWith<$Res> implements $QuizScreenState
   factory _$QuizScreenStateCopyWith(_QuizScreenState value, $Res Function(_QuizScreenState) _then) = __$QuizScreenStateCopyWithImpl;
 @override @useResult
 $Res call({
- String question, List<String> options, String answer, int highScore, double quizProgress
+ String question, List<String> options, String answer, int highScore, double quizProgress, bool isCompleted
 });
 
 
@@ -143,14 +145,15 @@ class __$QuizScreenStateCopyWithImpl<$Res>
 
 /// Create a copy of QuizScreenState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? question = null,Object? options = null,Object? answer = null,Object? highScore = null,Object? quizProgress = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? question = null,Object? options = null,Object? answer = null,Object? highScore = null,Object? quizProgress = null,Object? isCompleted = null,}) {
   return _then(_QuizScreenState(
 question: null == question ? _self.question : question // ignore: cast_nullable_to_non_nullable
 as String,options: null == options ? _self._options : options // ignore: cast_nullable_to_non_nullable
 as List<String>,answer: null == answer ? _self.answer : answer // ignore: cast_nullable_to_non_nullable
 as String,highScore: null == highScore ? _self.highScore : highScore // ignore: cast_nullable_to_non_nullable
 as int,quizProgress: null == quizProgress ? _self.quizProgress : quizProgress // ignore: cast_nullable_to_non_nullable
-as double,
+as double,isCompleted: null == isCompleted ? _self.isCompleted : isCompleted // ignore: cast_nullable_to_non_nullable
+as bool,
   ));
 }
 

@@ -10,5 +10,6 @@ abstract class QuizScreenState with _$QuizScreenState {
     required String answer,
     required int highScore,
     required double quizProgress,
+    required bool isCompleted
   }) = _QuizScreenState;
 }

@@ -27,11 +27,11 @@ class QuizViewModel extends ChangeNotifier {
       quizProgress: 0.0,
       answer: first.answer,
       highScore: 0,
+      isCompleted: false
     );
     notifyListeners();
   }
 
-  void updateQuestion() {}
 
   void onTap(String option) {
     if (option == _state.answer) _highscore += 10;
@@ -48,6 +48,7 @@ class QuizViewModel extends ChangeNotifier {
         answer: _state.answer,
         highScore: _highscore,
         quizProgress: 1.0,
+        isCompleted: true
       );
       showResultScreen();
     }
@@ -59,11 +60,18 @@ class QuizViewModel extends ChangeNotifier {
         answer: question.answer,
         highScore: _highscore,
         quizProgress: _state.quizProgress + 1 / _questions.length,
+        isCompleted: false
       );
     }
     notifyListeners();
   }
   void showResultScreen() {
     print(_highscore);
+  }
+
+  void onPressingReset() {
+    _index = 0;
+    _highscore = 0;
+    initializeState();
   }
 }
